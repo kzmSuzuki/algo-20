@@ -32,6 +32,7 @@ async function submitPost(username, message) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true",
       },
       body: JSON.stringify({
         username: username,
@@ -61,6 +62,9 @@ async function loadPosts() {
   try {
     const response = await fetch(`${API_BASE_URL}/api/posts`, {
       method: "GET",
+      headers: {
+        "ngrok-skip-browser-warning": "true",
+      },
       mode: "cors",
     });
 
@@ -139,6 +143,7 @@ async function setTamperMode(mode) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true",
       },
       body: JSON.stringify({ mode: mode }),
       mode: "cors",
