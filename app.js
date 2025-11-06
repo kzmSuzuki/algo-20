@@ -98,31 +98,14 @@ function displayPosts(posts) {
     .reverse()
     .map(
       (post) => `
-    <div class="post ${post.tampered ? "tampered" : ""}">
+    <div class="post">
       <div class="post-header">
         <span class="post-username">${escapeHtml(post.username)}</span>
         <span class="post-time">${new Date(post.timestamp).toLocaleString(
           "ja-JP"
         )}</span>
-        ${
-          post.tampered
-            ? '<span class="tampered-badge">⚠️ 改ざんされた可能性</span>'
-            : ""
-        }
       </div>
       <div class="post-message">${escapeHtml(post.message)}</div>
-      ${
-        post.originalMessage
-          ? `
-        <details class="original-message">
-          <summary>元のメッセージを表示</summary>
-          <div class="original-content">${escapeHtml(
-            post.originalMessage
-          )}</div>
-        </details>
-      `
-          : ""
-      }
     </div>
   `
     )
@@ -134,40 +117,6 @@ function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
-}
-
-// 改ざんモード設定
-async function setTamperMode(mode) {
-  try {
-    const response = await fetch(`${API_BASE_URL}/api/tamper-mode`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "ngrok-skip-browser-warning": "true",
-      },
-      body: JSON.stringify({ mode: mode }),
-      mode: "cors",
-    });
-
-    if (!response.ok) {
-      throw new Error("モード変更に失敗しました");
-    }
-
-    const data = await response.json();
-
-    const modeNames = {
-      none: "改ざんなし",
-      replace: "文字置換",
-      insert: "広告挿入",
-      delete: "一部削除",
-    };
-
-    document.getElementById("modeDisplay").textContent = modeNames[mode];
-    alert(`改ざんモードを「${modeNames[mode]}」に変更しました`);
-  } catch (error) {
-    console.error("モード変更エラー:", error);
-    alert("モード変更に失敗しました: " + error.message);
-  }
 }
 
 // ページ読み込み時に投稿を取得
