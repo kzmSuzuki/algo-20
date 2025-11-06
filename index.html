@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>セキュリティ実験用掲示板</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🔓 セキュリティ実験用掲示板</h1>
+        <div class="warning">
+          ⚠️ <strong>警告:</strong> この掲示板はHTTP通信を使用しています。<br />
+          投稿内容が改ざんされる可能性があります！
+        </div>
+      </header>
+
+      <!-- 投稿フォーム -->
+      <section class="post-form">
+        <h2>📝 投稿する</h2>
+        <form id="postForm">
+          <div class="form-group">
+            <label for="username">名前:</label>
+            <input
+              type="text"
+              id="username"
+              required
+              placeholder="あなたの名前"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">メッセージ:</label>
+            <textarea
+              id="message"
+              required
+              placeholder="ここにメッセージを入力..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">投稿</button>
+        </form>
+
+        <div class="info-box">
+          <h3>💡 このデモについて</h3>
+          <p>この掲示板への投稿は、教員のサーバーを経由します。</p>
+          <p><strong>通信途中で内容が改ざんされる可能性があります。</strong></p>
+          <p>Wiresharkで通信内容を確認してみましょう！</p>
+        </div>
+      </section>
+
+      <!-- 投稿一覧 -->
+      <section class="posts-section">
+        <div class="posts-header">
+          <h2>💬 投稿一覧</h2>
+          <button onclick="loadPosts()" class="btn-refresh">🔄 更新</button>
+        </div>
+
+        <div id="postsContainer" class="posts-container">
+          <div class="loading">読み込み中...</div>
+        </div>
+      </section>
+
+      <!-- デモコントロール（教員用） -->
+      <section class="demo-control">
+        <h2>🎛️ デモコントロール（教員用）</h2>
+        <div class="control-buttons">
+          <button onclick="setTamperMode('none')" class="btn-mode">
+            改ざんなし
+          </button>
+          <button onclick="setTamperMode('replace')" class="btn-mode">
+            文字置換
+          </button>
+          <button onclick="setTamperMode('insert')" class="btn-mode">
+            広告挿入
+          </button>
+          <button onclick="setTamperMode('delete')" class="btn-mode">
+            一部削除
+          </button>
+        </div>
+        <div id="currentMode" class="current-mode">
+          現在のモード: <span id="modeDisplay">改ざんなし</span>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
