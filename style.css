@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #2f3542;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  background: white;
+  padding: 30px;
+  border: 1px solid #e5e9f2;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  margin-bottom: 30px;
+}
+
+h1 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.warning {
+  background: #fff8f0;
+  color: #b65c02;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.warning strong {
+  font-weight: bold;
+}
+
+/* 投稿フォーム */
+.post-form,
+.posts-section,
+.demo-control {
+  background: white;
+  padding: 30px;
+  border: 1px solid #e5e9f2;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  margin-bottom: 30px;
+}
+
+.post-form h2,
+.posts-section h2,
+.demo-control h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #555;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+}
+
+.btn-submit:hover {
+  background: #dc3545;
+  transform: translateY(-1px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.info-box {
+  background: #eef3ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.info-box h3 {
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+.info-box p {
+  color: #555;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+/* 投稿一覧 */
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-refresh {
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.btn-refresh:hover {
+  background: #1565c0;
+}
+
+.posts-container {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.post-item {
+  background: #ffffff;
+  border: 1px solid #e0e6ed;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+.post-item.tampered {
+  background: #ffffff;
+  border: 1px solid #e0e6ed;
+}
+
+.tamper-badge {
+  display: inline-block;
+  background: transparent;
+  color: #6b7280;
+  border-radius: 0;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+/* デモコントロール */
+.control-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-mode {
+  padding: 12px;
+  background: #666;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.btn-mode:hover {
+  background: #dc3545;
+}
+
+.current-mode {
+  background: #f1f5fb;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#modeDisplay {
+  color: #0277bd;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .posts-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
